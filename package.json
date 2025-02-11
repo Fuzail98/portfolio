@@ -11,6 +11,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@react-three/drei": "^9.121.4",
+    "@react-three/fiber": "^8.17.14",
     "@remix-run/node": "^2.15.3",
     "@remix-run/react": "^2.15.3",
     "@remix-run/serve": "^2.15.3",
@@ -21,7 +23,8 @@
     "nodemon": "^3.1.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remix": "^2.15.3"
+    "remix": "^2.15.3",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.15.3",
