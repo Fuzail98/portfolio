@@ -9,7 +9,7 @@ export default function Projects() {
         throw new Error('Function not implemented.');
       }} />
       <h1>My Projects</h1>
-      <p>Check out some of the projects I've worked on!</p>
+      <p>Check out some of the projects I've worked on them for real!</p>
     </div>
   );
 }
