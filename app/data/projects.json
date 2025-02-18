@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Project 1: Chat Application",
+    "description": "A real-time messaging app with features like direct messaging, group chats, and media sharing.",
+    "tech": "Python, Node.js, MQTT, MongoDB",
+    "link": "/projects/mirror"
+  },
+  {
+    "title": "Project 2: Portfolio Website",
+    "description": "A personal portfolio website showcasing my projects and skills with an interactive UI.",
+    "tech": "Remix, Tailwind CSS, Framer Motion, 3Js",
+    "link": "#"
+  }
+]
