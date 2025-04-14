@@ -46,7 +46,7 @@ export default function Index() {
         {/* Small version of particle effect */}
         {/* <ParticleBackground />  */}
       </div>
-      <div className="flex justify-between items-center min-h-screen">
+      <div className="flex items-center min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: -30 }}  // Reduce the vertical movement for better spacing
           animate={{ opacity: 1, y: 0 }}
@@ -69,17 +69,26 @@ export default function Index() {
           <motion.button
             className="mt-6 sm:mt-8 px-6 py-3 text-lg sm:text-xl font-mono rounded-full bg-gradient-to-r from-green-600 to-green-400 hover:from-green-500 hover:to-green-600 text-white shadow-xl transform hover:scale-105 transition-all"
             whileHover={{ scale: 1.05 }}
+            onClick={() => {
+              window.location.href = '/projects'; // Example: navigate to projects page
+            }}
           >
             Explore More
           </motion.button>
         </motion.div>
-        <div className="w-1/2 bg-gray-200 dark:bg-gray-800 p-6 rounded-xl">
+
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}  // Reduce the vertical movement for better spacing
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          className="w-full backdrop:blur-0 bg-gray-200 dark:bg-gray-700 p-96 rounded-xl"
+        >
           {/* Right side content can go here */}
           <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white">Right Side Content</h2>
           <p className="text-center text-gray-700 dark:text-gray-300">
             This is an example of the right side content. You can add more details or images here.
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

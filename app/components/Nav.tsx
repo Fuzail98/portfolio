@@ -115,14 +115,18 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
         </div>
 
         {/* Dark/Light Mode Toggle Button in Desktop */}
-        <div className="hidden md:flex items-center">
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}  // Reduce the vertical movement for better spacing
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          className="hidden md:flex items-center">
           <button
             className="p-3 rounded-full bg-gradient-to-r from-green-500 to-green-700 dark:from-gray-700 dark:to-gray-400 shadow-lg hover:scale-110 transition-transform"
             onClick={() => setDarkMode(!darkMode)}
           >
             {darkMode ? <Sun size={22} className="text-yellow-400" /> : <Moon size={22} className="text-gray-900" />}
           </button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Mobile Menu */}

@@ -1,10 +1,13 @@
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import { useNavigate } from '@remix-run/react';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import ParticleEffect from '~/components/3d/ParticleEffect';
 import TechCube from '~/components/3d/TechCude';
 import Nav from '~/components/Nav';
+import projects from "~/data/projects.json";
+import constants from '~/utils/constants';
 
 export default function ChatAppDownload() {
     const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -13,6 +16,7 @@ export default function ChatAppDownload() {
         }
         return true;
     });
+    const navigate = useNavigate();
 
     useEffect(() => {
         const savedMode = localStorage.getItem('darkMode');
@@ -26,6 +30,12 @@ export default function ChatAppDownload() {
         }
     }, [darkMode]);
 
+    const thisProject = projects.find((project) => project.id === constants.CHAT_APP_ID);
+    useEffect(() => {
+        if (!thisProject) {
+            navigate("/404/not-found");
+        }
+    }, [thisProject, navigate]);
     return (
         <div className={`relative min-h-screen transition-colors duration-700 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-green-100 to-green-300 text-gray-900'}`}>
             <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -84,7 +94,11 @@ export default function ChatAppDownload() {
                                         <td className="border p-2">amd64</td>
                                         <td className="border p-2">Dev</td>
                                         <td className="border p-2">
-                                            <a className="text-blue-600 hover:underline" href="">
+                                            <a
+                                                className="text-blue-600 hover:underline"
+                                                href="/README.md"
+                                                download="README.md"
+                                            >
                                                 Download
                                             </a>
                                         </td>
@@ -96,6 +110,21 @@ export default function ChatAppDownload() {
                                         <td className="border p-2">UAT</td>
                                         <td className="border p-2">
                                             <a className="text-blue-600 hover:underline" href="">
+                                                Download
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="border p-2">Mac-OS</td>
+                                        <td className="border p-2">Sequoia 15.3.1</td>
+                                        <td className="border p-2">Apple M2</td>
+                                        <td className="border p-2">Dev</td>
+                                        <td className="border p-2">
+                                            <a
+                                                className="text-blue-600 hover:underline"
+                                                href="/README.md"
+                                                download="README.md"
+                                            >
                                                 Download
                                             </a>
                                         </td>
@@ -119,13 +148,18 @@ export default function ChatAppDownload() {
                 </motion.div>
 
                 {/* Right Side */}
-                <div className="w-1/2 bg-gray-200 dark:bg-gray-800 p-6 rounded-xl">
+                <motion.div
+                    initial={{ opacity: 0, y: -30 }}  // Reduce the vertical movement for better spacing
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.5, ease: 'easeOut' }}
+                    className="w-full backdrop:blur-0 bg-gray-200 dark:bg-gray-700 p-96 rounded-xl"
+                >
                     {/* Right side content can go here */}
                     <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white">Right Side Content</h2>
                     <p className="text-center text-gray-700 dark:text-gray-300">
                         This is an example of the right side content. You can add more details or images here.
                     </p>
-                </div>
+                </motion.div>
             </div>
         </div>
     );

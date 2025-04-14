@@ -90,7 +90,12 @@ export default function Projects() {
         </motion.div>
 
         {/* Right Side: Project Details */}
-        <div className="w-1/2 bg-gray-200 dark:bg-gray-800 p-6 rounded-xl">
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}  // Reduce the vertical movement for better spacing
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          className="w-full backdrop:blur-0 bg-gray-200 dark:bg-gray-800 p-96 rounded-xl"
+        >
           {selectedProject !== null ? (
             <>
               <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white">{projects[selectedProject].title}</h2>
@@ -98,9 +103,9 @@ export default function Projects() {
               <p className="mt-4 text-sm font-mono text-gray-500 dark:text-gray-400">Technologies: {projects[selectedProject].tech}</p>
             </>
           ) : (
-            <p className="text-center text-gray-700 dark:text-gray-300">Hover over a project to see the details here.</p>
+            <p className="text-center text-gray-700 dark:text-gray-300">Hover over a project to see the details here OR click on the project to know more.</p>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

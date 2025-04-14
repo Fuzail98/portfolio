@@ -76,13 +76,18 @@ export default function About() {
             Get in Touch
           </motion.button>
         </motion.div>
-        <div className="w-1/2 bg-gray-200 dark:bg-gray-800 p-6 rounded-xl">
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}  // Reduce the vertical movement for better spacing
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          className="w-full backdrop:blur-0 bg-gray-200 dark:bg-gray-700 p-96 rounded-xl"
+        >
           {/* Right side content can go here */}
           <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white">Right Side Content</h2>
           <p className="text-center text-gray-700 dark:text-gray-300">
             This is an example of the right side content. You can add more details or images here.
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
