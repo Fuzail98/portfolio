@@ -31,7 +31,7 @@ export default function About() {
               <TechCube />
             </Canvas>
           </div>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-mono tracking-tight leading-tight bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mt-2 pb-1">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-mono tracking-tight leading-tight bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent mt-2 pb-1">
             About Me
           </h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-mono text-gray-800 dark:text-gray-200">
@@ -41,8 +41,11 @@ export default function About() {
             My journey in technology began with a curiosity for how things work, and it has since evolved into a career dedicated to solving complex problems and delivering high-quality software. I’m always eager to learn new technologies and collaborate with like-minded individuals.
           </p>
           <motion.button
-            className="mt-6 sm:mt-8 px-6 py-3 text-lg sm:text-xl font-mono rounded-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-500 hover:to-blue-600 text-white shadow-xl transform hover:scale-105 transition-all"
+            className="mt-6 sm:mt-8 px-6 py-3 text-lg sm:text-xl font-mono rounded-full bg-gradient-to-r from-green-600 to-green-400 hover:from-green-500 hover:to-green-600 text-white shadow-xl transform hover:scale-105 transition-all"
             whileHover={{ scale: 1.05 }}
+            onClick={() => {
+              window.location.href = '/contact'; // Example: navigate to projects page
+            }}
           >
             Get in Touch
           </motion.button>

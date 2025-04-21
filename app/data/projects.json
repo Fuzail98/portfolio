@@ -12,5 +12,19 @@
     "tech": "Remix, Tailwind CSS, Framer Motion, 3Js",
     "link": "#",
     "id": "PORTFOLIO"
+  },
+  {
+    "title": "Project 3: Minute Taxi App",
+    "description": "Led a team in designing and developing a comprehensive taxi booking application, managing backend services, app development, and DevOps processes.",
+    "tech": "Java Spring Boot, Kotlin, Swift, PostgreSQL, Docker, AWS, GCP, Firebase, Remix",
+    "link": "#",
+    "id": "MINUTE_TAXI"
+  },
+  {
+    "title": "Project 4: Rebrand open source softwares",
+    "description": "Rebranded open-source software solutions such as OPNsense (Software firewall and gateway), Zabbix (Network monitoring and analytics), and Zerotier Controller (VPN management), customizing them to meet specific client requirements and branding guidelines.",
+    "tech": "Python, NodeJS, PHP, Bash, FreeBSD",
+    "link": "#",
+    "id": "OPEN_SOURCE_REBRAND"
   }
 ]
