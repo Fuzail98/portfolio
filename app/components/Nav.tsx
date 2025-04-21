@@ -1,15 +1,9 @@
 import { Link } from '@remix-run/react';
 import { motion } from 'framer-motion';
-import { Menu, Moon, Sun, X } from 'lucide-react'; // Import Menu and X icons
+import { Menu, X } from 'lucide-react'; // Import Menu and X icons
 import { useState } from 'react';
 
-// Define types for props
-interface NavProps {
-  darkMode: boolean;
-  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function Nav({ darkMode, setDarkMode }: NavProps) {
+export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -33,7 +27,7 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
 
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8 text-lg font-semibold">
+        <div className="hidden md:flex space-x-8 text-lg font-semibold absolute left-1/2 transform -translate-x-1/2">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,34 +98,12 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
               <Menu size={24} className="text-green-400" />
             )}
           </button>
-
-          {/* Dark/Light Mode Toggle Button */}
-          <button
-            className="p-3 rounded-full bg-gradient-to-r from-green-500 to-green-700 dark:from-gray-700 dark:to-gray-400 shadow-lg hover:scale-110 transition-transform mt-[-5px] z-50 relative"
-            onClick={() => setDarkMode(!darkMode)}
-          >
-            {darkMode ? <Sun size={22} className="text-yellow-400" /> : <Moon size={22} className="text-gray-900" />}
-          </button>
         </div>
-
-        {/* Dark/Light Mode Toggle Button in Desktop */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}  // Reduce the vertical movement for better spacing
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: 'easeOut' }}
-          className="hidden md:flex items-center">
-          <button
-            className="p-3 rounded-full bg-gradient-to-r from-green-500 to-green-700 dark:from-gray-700 dark:to-gray-400 shadow-lg hover:scale-110 transition-transform"
-            onClick={() => setDarkMode(!darkMode)}
-          >
-            {darkMode ? <Sun size={22} className="text-yellow-400" /> : <Moon size={22} className="text-gray-900" />}
-          </button>
-        </motion.div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className={`md:hidden absolute top-20 left-0 w-full p-5 space-y-6 ${darkMode ? 'bg-gradient-to-br from-gray-900 to-gray-800 text-white' : 'bg-gradient-to-br from-green-500 to-green-400 text-green-700'}`}>
+        <div className={"md:hidden absolute top-20 left-0 w-full p-5 space-y-6 bg-gradient-to-br from-gray-900 to-gray-800 text-white"}>
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

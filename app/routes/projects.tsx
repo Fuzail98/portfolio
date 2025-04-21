@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { useNavigate } from '@remix-run/react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import ParticleEffect from '~/components/3d/ParticleEffect';
 import TechCube from '~/components/3d/TechCude';
@@ -9,39 +9,14 @@ import Nav from '~/components/Nav';
 import projects from "~/data/projects.json";
 
 export default function Projects() {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('darkMode') === 'true';
-    }
-    return true; // Default to dark mode
-  });
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const savedMode = localStorage.getItem('darkMode');
-    setDarkMode(savedMode === 'true');
-  }, []);
-
-  useEffect(() => {
-    if (darkMode !== null) {
-      localStorage.setItem('darkMode', darkMode.toString());
-      if (darkMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
-  }, [darkMode]);
-
-  if (darkMode === null) return null;
 
   // State for hovered project
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
   return (
-    <div className={`relative min-h-screen transition-colors duration-700 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-blue-100 to-blue-300 text-gray-900'}`}>
-      <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
+    <div className={"relative min-h-screen transition-colors duration-700 bg-gray-900 text-white"}>
+      <Nav />
 
       <div
         className="absolute inset-0 bg-cover bg-center opacity-90"

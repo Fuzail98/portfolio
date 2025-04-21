@@ -2,7 +2,7 @@ import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { useNavigate } from '@remix-run/react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ParticleEffect from '~/components/3d/ParticleEffect';
 import TechCube from '~/components/3d/TechCude';
 import Nav from '~/components/Nav';
@@ -10,25 +10,7 @@ import projects from "~/data/projects.json";
 import constants from '~/utils/constants';
 
 export default function ChatAppDownload() {
-    const [darkMode, setDarkMode] = useState<boolean>(() => {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem('darkMode') === 'true';
-        }
-        return true;
-    });
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const savedMode = localStorage.getItem('darkMode');
-        setDarkMode(savedMode === 'true');
-    }, []);
-
-    useEffect(() => {
-        if (darkMode !== null) {
-            localStorage.setItem('darkMode', darkMode.toString());
-            document.documentElement.classList.toggle('dark', darkMode);
-        }
-    }, [darkMode]);
 
     const thisProject = projects.find((project) => project.id === constants.CHAT_APP_ID);
     useEffect(() => {
@@ -37,8 +19,8 @@ export default function ChatAppDownload() {
         }
     }, [thisProject, navigate]);
     return (
-        <div className={`relative min-h-screen transition-colors duration-700 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-green-100 to-green-300 text-gray-900'}`}>
-            <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
+        <div className={"relative min-h-screen transition-colors duration-700 bg-gray-900 text-white"}>
+            <Nav />
             <div className="absolute inset-0 bg-cover bg-center opacity-90"
                 style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?abstract,technology,innovation')" }}>
                 <ParticleEffect />

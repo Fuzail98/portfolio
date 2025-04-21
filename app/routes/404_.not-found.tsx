@@ -1,40 +1,13 @@
 import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import ParticleEffect from '~/components/3d/ParticleEffect';
 import TechCube from '~/components/3d/TechCude';
 import Nav from '~/components/Nav';
 
 export default function NotFound() {
-    const [darkMode, setDarkMode] = useState<boolean>(() => {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem('darkMode') === 'true';
-        }
-        return true; // Default to dark mode
-    });
-
-    useEffect(() => {
-        const savedMode = localStorage.getItem('darkMode');
-        setDarkMode(savedMode === 'true');
-    }, []);
-
-    useEffect(() => {
-        if (darkMode !== null) {
-            localStorage.setItem('darkMode', darkMode.toString());
-
-            if (darkMode) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        }
-    }, [darkMode]);
-
-    if (darkMode === null) return null;
-
     return (
-        <div className={`relative min-h-screen transition-colors duration-700 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-red-100 to-yellow-300 text-gray-900'}`}>
-            <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
+        <div className={"relative min-h-screen transition-colors duration-700 bg-gray-900 text-white"}>
+            <Nav />
 
 
             <div

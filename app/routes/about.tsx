@@ -1,42 +1,13 @@
 import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import ParticleEffect from '~/components/3d/ParticleEffect';
 import TechCube from '~/components/3d/TechCude';
 import Nav from '~/components/Nav';
 
 export default function About() {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('darkMode') === 'true';
-    }
-    return true; // Default to dark mode
-  });
-
-  useEffect(() => {
-    // Ensure this runs only in the browser
-    const savedMode = localStorage.getItem('darkMode');
-    setDarkMode(savedMode === 'true'); // Convert to boolean
-  }, []);
-
-  useEffect(() => {
-    if (darkMode !== null) { // Prevent running on first SSR render
-      localStorage.setItem('darkMode', darkMode.toString());
-
-      // Apply Tailwind's dark mode class
-      if (darkMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
-  }, [darkMode]);
-
-  if (darkMode === null) return null; // Prevent flash on first render
-
   return (
-    <div className={`relative min-h-screen transition-colors duration-700 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-blue-100 to-blue-300 text-gray-900'}`}>
-      <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
+    <div className={"relative min-h-screen transition-colors duration-700 bg-gray-900 text-white"}>
+      <Nav />
 
       <div
         className="absolute inset-0 bg-cover bg-center opacity-90"
