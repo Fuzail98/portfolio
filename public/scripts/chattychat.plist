@@ -1,0 +1,22 @@
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.fuzail.chatty</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>chatty</string> <!-- export binary path in the PATH in the shell config in the install script -->
+  </array>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/chatty.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/chatty.err</string>
+</dict>
+</plist>

@@ -1,7 +1,11 @@
 const CHAT_APP_ID: String = 'CHAT_TY_APP';
 const PORTFOLIO_APP_ID: String = 'PORTFOLIO';
+const MINUTE_TAXI: String = 'MINUTE_TAXI';
+const OPEN_SOURCE_REBRAND: String = 'OPEN_SOURCE_REBRAND';
 
 export default {
     CHAT_APP_ID,
-    PORTFOLIO_APP_ID
+    PORTFOLIO_APP_ID,
+    MINUTE_TAXI,
+    OPEN_SOURCE_REBRAND
 }

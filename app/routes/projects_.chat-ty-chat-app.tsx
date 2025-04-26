@@ -73,25 +73,14 @@ export default function ChatAppDownload() {
                                     <tr>
                                         <td className="border p-2">Ubuntu</td>
                                         <td className="border p-2">22.04</td>
-                                        <td className="border p-2">amd64</td>
+                                        <td className="border p-2">x64</td>
                                         <td className="border p-2">Dev</td>
                                         <td className="border p-2">
                                             <a
                                                 className="text-blue-600 hover:underline"
-                                                href="/README.md"
-                                                download="README.md"
+                                                href="/scripts/linux/install.sh"
+                                                download="install.sh"
                                             >
-                                                Download
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="border p-2">Ubuntu</td>
-                                        <td className="border p-2">22.04</td>
-                                        <td className="border p-2">amd64</td>
-                                        <td className="border p-2">UAT</td>
-                                        <td className="border p-2">
-                                            <a className="text-blue-600 hover:underline" href="">
                                                 Download
                                             </a>
                                         </td>
@@ -104,8 +93,8 @@ export default function ChatAppDownload() {
                                         <td className="border p-2">
                                             <a
                                                 className="text-blue-600 hover:underline"
-                                                href="/README.md"
-                                                download="README.md"
+                                                href="/public/scripts/macos/install.sh"
+                                                download="install.sh"
                                             >
                                                 Download
                                             </a>
@@ -131,16 +120,47 @@ export default function ChatAppDownload() {
 
                 {/* Right Side */}
                 <motion.div
-                    initial={{ opacity: 0, y: -30 }}  // Reduce the vertical movement for better spacing
+                    initial={{ opacity: 0, y: -30 }} // Reduce the vertical movement for better spacing
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.5, ease: 'easeOut' }}
-                    className="w-full backdrop:blur-0 bg-gray-200 dark:bg-gray-700 p-96 rounded-xl"
+                    className="w-full bg-gray-200 dark:bg-gray-700 p-10 rounded-xl h-full overflow-y-auto"
                 >
-                    {/* Right side content can go here */}
-                    <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white">Right Side Content</h2>
-                    <p className="text-center text-gray-700 dark:text-gray-300">
-                        This is an example of the right side content. You can add more details or images here.
-                    </p>
+                    <h2 className="text-2xl font-bold text-center text-green-500">How to Download and Use</h2>
+                    <div className="mt-6 space-y-4 text-green-400">
+                        <h3 className="text-lg font-semibold">Steps to Download:</h3>
+                        <ol className="list-decimal list-inside space-y-2">
+                            <li>Locate your desired OS and version in the table on the left.</li>
+                            <li>Click the "Download" link corresponding to your OS and environment.</li>
+                            <li>Save the file to your preferred location on your system.</li>
+                        </ol>
+                        <p className="mt-6 space-y-4 text-green-400">This will download the installation script on your system.</p>
+
+                        <h3 className="text-lg font-semibold">Download via Command Line:</h3>
+                        <p className="mt-6 space-y-4 text-green-400">Example for Ubuntu Dev version:</p>
+                        <pre className="bg-green-900 text-green-300 p-4 rounded-md overflow-x-auto">
+                            <code>
+                                curl -o ~/install.sh https://portfolio-fuzi98.onrender.com/public/scripts/linux/install.sh
+                            </code>
+                        </pre>
+
+                        <h3 className="text-lg font-semibold">How to Use the App:</h3>
+                        <ol className="list-decimal list-inside space-y-2">
+                            <li>Run the installation script with the following command:
+                                <pre className="bg-green-900 text-green-300 p-4 rounded-md overflow-x-auto">
+                                    <code>
+                                        cd ~ && chmod +x install.sh && ./install.sh
+                                    </code>
+                                </pre>
+                            </li>
+                            <li>Run the application using the following command:
+                                <pre className="bg-green-900 text-green-300 p-4 rounded-md overflow-x-auto">
+                                    <code>chatty</code>
+                                </pre>
+                            </li>
+                            <li>Follow the on-screen instructions to set up and start using the app.</li>
+                        </ol>
+                    </div>
+
                 </motion.div>
             </div>
         </div>

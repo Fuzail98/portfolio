@@ -1,0 +1,19 @@
+[Unit]
+Description=ChatTy Chat App
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/chattybe
+#Restart=always
+#RestartSec=2 # In seconds
+
+#WorkingDirectory=/path/to/service/directory
+#ExecStart=/path/to/start_myservice.sh
+#ExecStart=/usr/share/hawkagent/start.sh
+
+[Install]
+WantedBy=default.target
+
+# I personally fell into this one more than once. By default, when you configure Restart=always as we did, 
+# systemd gives up restarting your service if it fails to start more than 5 times within a 10 seconds interval.
+# You could also use on-failure to only restart if the exit status is not 0.
