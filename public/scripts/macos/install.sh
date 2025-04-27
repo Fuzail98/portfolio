@@ -6,8 +6,8 @@ CHATTY_MIRROR_URL="https://portfolio-fuzi98.onrender.com"
 # CHATTY_MIRROR_URL="http://localhost:5173"
 CHATTY_SETUP_LOG_FILE="$CHATTY_DIR/logs/chattychat_setup.log"
 BINARIES=(
-    "$CHATTY_MIRROR_URL/public/binaries/backend/macos/macos.zip"
-    # "$CHATTY_MIRROR_URL/public/binaries/client/chattyClient.zip"
+    "$CHATTY_MIRROR_URL/binaries/backend/macos/macos.zip"
+    # "$CHATTY_MIRROR_URL/binaries/client/chattyClient.zip"
 )
 CHATTY_PLIST_FILE_PATH="$HOME/Library/LaunchAgents/com.fuzail.chatty.plist"
 
@@ -20,7 +20,7 @@ error() {
 }
 
 setup_plist_file() {
-    local plist_file_url="$CHATTY_MIRROR_URL/public/scripts/chattychat.plist"
+    local plist_file_url="$CHATTY_MIRROR_URL/scripts/chattychat.plist"
     log "Downloading Chattychat plist file from $plist_file_url..."
     if ! curl -o "$CHATTY_PLIST_FILE_PATH" "$plist_file_url"; then
         error "Failed to download plist file."

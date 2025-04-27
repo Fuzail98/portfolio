@@ -93,7 +93,7 @@ export default function ChatAppDownload() {
                                         <td className="border p-2">
                                             <a
                                                 className="text-blue-600 hover:underline"
-                                                href="/public/scripts/macos/install.sh"
+                                                href="/scripts/macos/install.sh"
                                                 download="install.sh"
                                             >
                                                 Download
@@ -139,7 +139,7 @@ export default function ChatAppDownload() {
                         <p className="mt-6 space-y-4 text-green-400">Example for Ubuntu Dev version:</p>
                         <pre className="bg-green-900 text-green-300 p-4 rounded-md overflow-x-auto">
                             <code>
-                                curl -o ~/install.sh https://portfolio-fuzi98.onrender.com/public/scripts/linux/install.sh
+                                curl -o ~/install.sh https://portfolio-fuzi98.onrender.com/scripts/linux/install.sh
                             </code>
                         </pre>
 
