@@ -5,11 +5,11 @@ CHATTY_DIRS=("$CHATTY_DIR/configs" "$CHATTY_DIR/logs" "$CHATTY_DIR/store/chats" 
 CHATTY_MIRROR_URL="https://portfolio-fuzi98.onrender.com"
 # CHATTY_MIRROR_URL="http://localhost:5173"
 CHATTY_SETUP_LOG_FILE="$CHATTY_DIR/logs/chattychat_setup.log"
+CHATTY_BE_SERVER_LOG_FILE="$CHATTY_DIR/logs/server.log"
 BINARIES=(
     "$CHATTY_MIRROR_URL/binaries/backend/macos/macos.zip"
     # "$CHATTY_MIRROR_URL/binaries/client/chattyClient.zip"
 )
-CHATTY_PLIST_FILE_PATH="$HOME/Library/LaunchAgents/com.fuzail.chatty.plist"
 
 log() {
     echo "[INFO] $(date "+%Y-%m-%d %H:%M:%S") $1" | tee -a "$CHATTY_SETUP_LOG_FILE"
@@ -17,17 +17,6 @@ log() {
 
 error() {
     echo "[ERROR] $(date "+%Y-%m-%d %H:%M:%S") $1" | tee -a "$CHATTY_SETUP_LOG_FILE" >&2
-}
-
-setup_plist_file() {
-    local plist_file_url="$CHATTY_MIRROR_URL/scripts/chattychat.plist"
-    log "Downloading Chattychat plist file from $plist_file_url..."
-    if ! curl -o "$CHATTY_PLIST_FILE_PATH" "$plist_file_url"; then
-        error "Failed to download plist file."
-        exit 1
-    else
-        log "Plist file downloaded successfully."
-    fi
 }
 
 setup_exe_files() {
@@ -57,23 +46,9 @@ setup_exe_files() {
 echo "Starting setup..."
 mkdir -p "${CHATTY_DIRS[@]}"
 [ ! -e "$CHATTY_SETUP_LOG_FILE" ] && touch "$CHATTY_SETUP_LOG_FILE"
+[ ! -e "$CHATTY_BE_SERVER_LOG_FILE" ] && touch "$CHATTY_BE_SERVER_LOG_FILE"
 
-setup_plist_file
 setup_exe_files
-
-if launchctl unload "$CHATTY_PLIST_FILE_PATH" 2>/dev/null; then
-    log "Unloaded existing plist file."
-fi
-
-if launchctl load "$CHATTY_PLIST_FILE_PATH"; then
-    log "Loaded plist file successfully."
-    launchctl start com.fuzail.chatty || error "Failed to start the service."
-else
-    error "Failed to load plist file."
-fi
-
-log "Starting Chattychat backend..."
-launchctl start com.fuzail.chatty
 
 log "Adding $CHATTY_DIR/bin to PATH permanently..."
 if ! grep -q "export PATH=\$PATH:$CHATTY_DIR/bin" "$HOME/.bash_profile" 2>/dev/null; then
@@ -95,5 +70,8 @@ elif [ -f "$HOME/.bash_profile" ]; then
 else
     log "No shell configuration file found to source."
 fi
+
+log "Starting chatty-chat server..."
+nohup chatty-chat > "$CHATTY_DIR/logs/server.log" 2>&1 &
 
 log "Setup completed."
