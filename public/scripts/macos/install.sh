@@ -2,8 +2,8 @@
 
 CHATTY_DIR="$HOME/chatTyChat"
 CHATTY_DIRS=("$CHATTY_DIR/configs" "$CHATTY_DIR/logs" "$CHATTY_DIR/store/chats" "$CHATTY_DIR/store/ascii" "$CHATTY_DIR/bin")
-# CHATTY_MIRROR_URL="https://portfolio-fuzi98.onrender.com"
-CHATTY_MIRROR_URL="http://localhost:5173"
+CHATTY_MIRROR_URL="https://portfolio-fuzi98.onrender.com"
+# CHATTY_MIRROR_URL="http://localhost:5173"
 CHATTY_SETUP_LOG_FILE="$CHATTY_DIR/logs/chattychat_setup.log"
 BINARIES=(
     "$CHATTY_MIRROR_URL/public/binaries/backend/macos/macos.zip"
